@@ -61,7 +61,7 @@ autoTime
 ---
 * ###参数
 
-**AutoTime( object [ [, option ] [ , callback ] ] ) {**
+**AutoTime(object[,option][,callback]) {**
 
 
 
