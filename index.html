@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>autoTime demo</title>
+
+    <link rel="stylesheet" href="styles/reset.css"/>
+    <link rel="stylesheet" href="styles/autoTime.css"/>
+</head>
+<body>
+<p class="cl-title">时间播放条</p>
+<div class="cl-content">
+    <div class="autoTime" id="autoTime1">
+        <ul class="time-bgs">
+            <li class="time-left"></li>
+            <li class="time-bg">
+                <div><span></span></div>
+            </li>
+            <li class="time-right"></li>
+            <li class="time-oper">
+                <i class="time-prev"></i>
+                <i class="time-status"></i>
+                <i class="time-next"></i>
+            </li>
+            <li class="time-position">
+                <ul class="time-graduationCon"></ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="cl-content">
+    <div class="autoTime" id="autoTime2">
+        <ul class="time-bgs">
+            <li class="time-left"></li>
+            <li class="time-bg">
+                <div><span></span></div>
+            </li>
+            <li class="time-right"></li>
+            <li class="time-oper">
+                <i class="time-prev"></i>
+                <i class="time-status"></i>
+                <i class="time-next"></i>
+            </li>
+            <li class="time-position">
+                <ul class="time-graduationCon"></ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="cl-content">
+    <div class="autoTime" id="autoTime3">
+        <ul class="time-bgs">
+            <li class="time-left"></li>
+            <li class="time-bg">
+                <div><span></span></div>
+            </li>
+            <li class="time-right"></li>
+            <li class="time-oper">
+                <i class="time-prev"></i>
+                <i class="time-status"></i>
+                <i class="time-next"></i>
+            </li>
+            <li class="time-position">
+                <ul class="time-graduationCon"></ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="scripts/autoTime.js"></script>
+
+<script type="text/javascript">
+
+
+    //使用默认值加载时间轴
+    new AutoTime($("#autoTime1"));
+
+    //自定义时间轴参数
+    new AutoTime(
+        $("#autoTime2"), {
+            autoPlay: true,//是否自动播放
+            playOnce: false,//是否只自动播放一次,依赖autoPlay
+            transition: true,//是否启用周期平滑过渡,依赖autoPlay（当游标到达时间轴末尾时，自动使用动画返回到时间轴起始位置）
+            autoPlaySpeed: 2000,//播放一个完整刻度的时间（ms）,依赖autoPlay
+            buttonPosition: "right",//操作按钮的位置（可选值“left”、“right”或“”）
+            clickSpeed: 1000,//点击按钮最低时间间隔
+            range: [["2013-01-01", "2014-01-01", "2015-01-01", "2016-01-01"], "month"]//刻度数据 刻度的显示类型
+        },
+        function (data) {
+            console.log("时间条2到达：" + data.dateArray[0]);
+        }
+    );
+
+    //自定义时间轴参数
+    new AutoTime(
+        $("#autoTime3"), {
+            playOnce: false,//是否只自动播放一次,依赖autoPlay
+            transition: true,//是否启用周期平滑过渡,依赖autoPlay（当游标到达时间轴末尾时，自动使用动画返回到时间轴起始位置）
+            autoPlaySpeed: 3000,//播放一个完整刻度的时间（ms）,依赖autoPlay
+            buttonPosition: "right",//操作按钮的位置（可选值“left”、“right”或“”）
+            clickSpeed: 1000,//点击按钮最低时间间隔
+            range: [["2011.01.01", "2012.01.01", "2013.01.01", "2014.01.01", "2015.01.01", "2016.01.01"], "day"]//刻度数据 刻度的显示类型
+        },
+        function (data) {
+            console.log("时间条3到达：" + data.dateArray[0]);
+        }
+    );
+</script>
+
+</html>

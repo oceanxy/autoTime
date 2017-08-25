@@ -1,0 +1,143 @@
+.autoTime {
+  width: 100%;
+  height: 50px;
+  display: block;
+  overflow: hidden;
+  bottom: -50px;
+  background: url("../images/opacity70.png") repeat;
+}
+
+.autoTime li {
+  float: left;
+}
+
+.autoTime .time-bgs {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 100;
+}
+
+.autoTime .time-bgs .time-oper {
+  position: relative;
+  font-size: 14px;
+  width: 90px;
+  line-height: 50px;
+  z-index: 102;
+}
+
+.autoTime .time-bgs .time-oper .time-prev {
+  width: 25px;
+  height: 17px;
+  display: inline-block;
+  background: url("../images/time-prev.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-oper .time-status {
+  width: 25px;
+  height: 17px;
+  display: inline-block;
+  background: url("../images/time-start.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-oper .time-status.pause {
+  background: url("../images/time-pause.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-oper .time-next {
+  width: 25px;
+  height: 17px;
+  display: inline-block;
+  background: url("../images/time-next.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-oper i:hover {
+  opacity: 0.7;
+  cursor: pointer;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+}
+
+.autoTime .time-bgs .time-left {
+  width: 14px;
+  height: 100%;
+  background: url("../images/time-left.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-bg {
+  position: relative;
+  height: 1px;
+  margin-top: 25px;
+  background: url("../images/time-bgLine.png") repeat;
+  z-index: 102;
+}
+
+.autoTime .time-bgs .time-bg span {
+  width: 30px;
+  height: 25px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: -13px;
+  background: url("../images/time-curr.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-bg span:hover {
+  cursor: move;
+}
+
+.autoTime .time-bgs .time-right {
+  width: 14px;
+  height: 50px;
+  background: url("../images/time-right.png") no-repeat center;
+}
+
+.autoTime .time-bgs .time-position {
+  position: relative;
+  height: 50px;
+  top: -50px;
+  border: 1px dashed #ffffff;
+  z-index: 101;
+}
+
+.autoTime .time-graduationCon {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.autoTime .time-graduationCon .time-graduation {
+  width: 30px;
+  height: 50px;
+  text-align: center;
+}
+
+.autoTime .time-graduationCon .time-graduation i {
+  width: 5px;
+  height: 15px;
+  margin-top: 9px;
+  display: inline-block;
+  background: url("../images/graduation-big.png") no-repeat center bottom;
+}
+
+.autoTime .time-graduationCon .time-graduation p {
+  font-size: 12px;
+  color: #333333;
+  line-height: 20px;
+  width: 100px;
+  margin-top: 0;
+  margin-left: -35px;
+}
+
+.autoTime .time-graduationCon .time-layout {
+  width: 100px;
+  height: 7px;
+  margin-top: 17px;
+  background: url("../images/graduation-small.png") repeat-x left bottom;
+}
+
+/*# sourceMappingURL=autoTime-cr.css.map */
