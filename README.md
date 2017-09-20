@@ -1,9 +1,10 @@
-autoTime
-=
- 可回调时间拖动条
- 
- <a style='font-size: 12px' target='_blank' href='http://www.xieyangogo.cn/autoTime'>demo</a>
--
+#autoTime
+
+##可回调时间拖动条
+
+点击查看 <a target='_blank' href='http://www.xieyangogo.cn/autoTime'>demo</a>
+
+---
 
 > ####注意事项：
 >
