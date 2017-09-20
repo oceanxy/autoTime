@@ -1,7 +1,8 @@
 autoTime
 =
  可回调时间拖动条
- <a href='http://www.xieyangogo.cn/autoTime'>demo</a>
+ 
+ <a style='font-size: 12px' target='_blank' href='http://www.xieyangogo.cn/autoTime'>demo</a>
 -
 
 > ####注意事项：
