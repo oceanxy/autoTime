@@ -1,5 +1,6 @@
 ---
-#autoTime 可回调时间拖动条
+#  autoTime 
+可回调时间拖动条
 
 点击查看 <a target='_blank' href='http://www.xieyangogo.cn/autoTime'>demo</a>
 
