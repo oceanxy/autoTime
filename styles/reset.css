@@ -52,11 +52,12 @@ input, button, textarea, select {
   background: linear-gradient(to bottom, #bcd1e1 0%, #ffffff 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bcd1e1', endColorstr='#ffffff', GradientType=0);
 }
+
 :root .gradient {
   filter: none;
 }
 
-.cl-content{
+.cl-content {
   width: 100%;
   height: auto;
   display: block;

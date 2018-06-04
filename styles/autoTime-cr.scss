@@ -5,11 +5,11 @@
   overflow: hidden;
   bottom: -50px;
   background: url("../images/opacity70.png") repeat;
-
+  
   li {
     float: left;
   }
-
+  
   .time-bgs {
     width: 100%;
     height: 100%;
@@ -17,39 +17,39 @@
     margin: 0;
     list-style: none;
     z-index: 100;
-
+    
     .time-oper {
       position: relative;
       font-size: 14px;
       width: 90px;
       line-height: 50px;
       z-index: 102;
-
+      
       .time-prev {
         width: 25px;
         height: 17px;
         display: inline-block;
         background: url("../images/time-prev.png") no-repeat center;
       }
-
+      
       .time-status {
         width: 25px;
         height: 17px;
         display: inline-block;
         background: url("../images/time-start.png") no-repeat center;
       }
-
+      
       .time-status.pause {
         background: url("../images/time-pause.png") no-repeat center;
       }
-
+      
       .time-next {
         width: 25px;
         height: 17px;
         display: inline-block;
         background: url("../images/time-next.png") no-repeat center;
       }
-
+      
       i:hover {
         opacity: 0.7;
         cursor: pointer;
@@ -57,20 +57,20 @@
         filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
       }
     }
-
+    
     .time-left {
       width: 14px;
       height: 100%;
       background: url("../images/time-left.png") no-repeat center;
     }
-
+    
     .time-bg {
       position: relative;
       height: 1px;
       margin-top: 25px;
       background: url("../images/time-bgLine.png") repeat;
       z-index: 102;
-
+      
       span {
         width: 30px;
         height: 25px;
@@ -79,19 +79,19 @@
         left: 0;
         top: -13px;
         background: url("../images/time-curr.png") no-repeat center;
-
+        
         &:hover {
           cursor: move;
         }
       }
     }
-
+    
     .time-right {
       width: 14px;
       height: 50px;
       background: url("../images/time-right.png") no-repeat center;
     }
-
+    
     .time-position {
       position: relative;
       height: 50px;
@@ -100,19 +100,19 @@
       z-index: 101;
     }
   }
-
+  
   .time-graduationCon {
     width: 100%;
     height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
-
+    
     .time-graduation {
       width: 30px;
       height: 50px;
       text-align: center;
-
+      
       i {
         width: 5px;
         height: 15px;
@@ -120,7 +120,7 @@
         display: inline-block;
         background: url("../images/graduation-big.png") no-repeat center bottom;
       }
-
+      
       p {
         font-size: 12px;
         color: #333333;
@@ -130,7 +130,7 @@
         margin-left: -35px;
       }
     }
-
+    
     .time-layout {
       width: 100px;
       height: 7px;
