@@ -10,7 +10,7 @@
 * 发现bug或技术上的交流请发邮件到：[xyzsyx@163.com]()
 * 本插件依赖jQuery库
 * 当插件父容器的宽度发生改变，且本插件没有自动调整布局时，请手动调用本插件重新布局方法：
-	
+
 		AutoTime.reLayout(delay);
 
 	参数delay为延迟执行的毫秒数（如有动画，重新布局应在发生宽度改变动画结束后调用）
@@ -24,46 +24,39 @@
 #### 使用方法：
 
 1. 导入样式表
- 		```HTML
-		```
-
-		<link rel="stylesheet" type="text/css" href="styles/autoTime.css"></link>
+    ```HTML
+    <link rel="stylesheet" type="text/css" href="styles/autoTime.css"></link>
+    ```
     
 2. 导入jquery库文件和autoTime.js
-		```HTML
-		```
-
-	    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	    <script src="scripts/autoTime.js"></script>
-
+	```HTML
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="scripts/autoTime.js"></script>
+    ```
 3. DOM
-		```HTML
-		```
-
-	    <div class="autoTime" id="autoTime1">
-	        <ul class="time-bgs">
-	            <li class="time-left"></li>
-	            <li class="time-bg">
-	                <div><span></span></div>
-	            </li>
-	            <li class="time-right"></li>
-	            <li class="time-oper">
-	                <i class="time-prev"></i>
-	                <i class="time-status"></i>
-	                <i class="time-next"></i>
-	            </li>
-	            <li class="time-position">
-	                <ul class="time-graduationCon"></ul>
-	            </li>
-	        </ul>
-	    </div>
-    
+	```HTML
+    <div class="autoTime" id="autoTime1">
+        <ul class="time-bgs">
+            <li class="time-left"></li>
+            <li class="time-bg">
+                <div><span></span></div>
+            </li>
+            <li class="time-right"></li>
+            <li class="time-oper">
+                <i class="time-prev"></i>
+                <i class="time-status"></i>
+                <i class="time-next"></i>
+            </li>
+            <li class="time-position">
+                <ul class="time-graduationCon"></ul>
+            </li>
+        </ul>
+    </div>
+    ```
 4. 调用 / 初始化 
-		```javaScript
-		```
-
-		var autoTime = new AutoTime($("#autoTime"));
-	
+	```javaScript
+	var autoTime = new AutoTime($("#autoTime"));
+	```
 ---
 
 * 参数
