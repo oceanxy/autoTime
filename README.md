@@ -1,6 +1,6 @@
 
 # autoTime 
-##可回调时间拖动条
+## 时间播放轴
 
 点击查看 [demo](http://www.xieyangogo.cn/autoTime)
 
