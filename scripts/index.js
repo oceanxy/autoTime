@@ -18,7 +18,7 @@
  * @param {Function=} callback 回调函数
  * @constructor
  */
-function AutoTime(object, option, callback) {
+function Index(object, option, callback) {
   /**
    * 版本号
    * @type {string}
@@ -33,18 +33,18 @@ function AutoTime(object, option, callback) {
   } else {
     this.caller = $(object)
   }
-  
+
   if(this.caller.length === 0) {
     console.log('时间播放条初始化失败，原因（按照指定的选择器 ‘' + this.caller.selector + '’ 未能找到DOM元素）')
     return
   }
-  
+
   /**
    * 可配置项参数
    * @type {Object}
    */
   this.option = this.defaultOption
-  
+
   /**
    * 回调函数
    * @type {Function}
@@ -52,7 +52,7 @@ function AutoTime(object, option, callback) {
   this.callback = function() {
     console.log('未设置回调函数')
   }
-  
+
   if(arguments.length === 2) {
     if(typeof arguments[1] === 'object') {
       this.option = $.extend(
@@ -67,7 +67,7 @@ function AutoTime(object, option, callback) {
     this.option = option
     this.callback = callback
   }
-  
+
   /**
    * 总宽度
    * @type {undefined | number}
@@ -138,7 +138,7 @@ function AutoTime(object, option, callback) {
    * @type {number}
    */
   this.graduationLeft = 0
-  
+
   /**
    * 点击按钮最低时间间隔
    * 默认1000
@@ -193,7 +193,7 @@ function AutoTime(object, option, callback) {
    *    array[1] string 时间显示类型（可选值“year”[默认]、“month”或“day”）
    */
   this.range = this.option.range
-  
+
   /**
    * 布局
    */
@@ -202,7 +202,7 @@ function AutoTime(object, option, callback) {
    * 事件
    */
   this._event()
-  
+
   //启动
   this.start(0, false)
 }
@@ -210,7 +210,7 @@ function AutoTime(object, option, callback) {
 /**
  * 原型
  * @type {{
-     *      constructor: AutoTime,
+     *      constructor: Index,
      *      defaultOption: {
      *          autoPlay: boolean,
      *          playOnce: boolean,
@@ -219,27 +219,27 @@ function AutoTime(object, option, callback) {
      *          buttonPosition: string,
      *          clickSpeed: number,
      *          range: [null,string]},
-     *          layout: AutoTime.layout,
-     *          reLayout: AutoTime.reLayout,
-     *          start: AutoTime.start,
-     *          pause: AutoTime.pause,
-     *          move: AutoTime.move,
-     *          mouseUp: AutoTime.mouseUp,
-     *          resetGraduation: AutoTime.resetGraduation,
-     *          closestGraduation: AutoTime.closestGraduation,
-     *          animationQueue: AutoTime.animationQueue,
-     *          animationFactory: AutoTime.animationFactory,
-     *          _run: AutoTime._run,
-     *          _transition: AutoTime._transition,
-     *          transitionStatus: AutoTime.transitionStatus,
-     *          callbackFun: AutoTime.callbackFun,
-     *          inoperableChange: AutoTime.inoperableChange,
-     *          _event: AutoTime._event
+     *          layout: Index.layout,
+     *          reLayout: Index.reLayout,
+     *          start: Index.start,
+     *          pause: Index.pause,
+     *          move: Index.move,
+     *          mouseUp: Index.mouseUp,
+     *          resetGraduation: Index.resetGraduation,
+     *          closestGraduation: Index.closestGraduation,
+     *          animationQueue: Index.animationQueue,
+     *          animationFactory: Index.animationFactory,
+     *          _run: Index._run,
+     *          _transition: Index._transition,
+     *          transitionStatus: Index.transitionStatus,
+     *          callbackFun: Index.callbackFun,
+     *          inoperableChange: Index.inoperableChange,
+     *          _event: Index._event
      *     }
      * }
  */
-AutoTime.prototype = {
-  constructor: AutoTime,
+Index.prototype = {
+  constructor: Index,
   /**
    * 默认参数值配置
    */
@@ -260,12 +260,12 @@ AutoTime.prototype = {
     this.caller
       .find('.time-graduationCon')
       .html('')
-    
+
     //设置总宽度
     this.lineWidth = this.caller
       .parent()
       .width()
-    
+
     //设置操作按钮位置
     if(this.buttonPosition === 'left') {
       this.caller
@@ -286,9 +286,9 @@ AutoTime.prototype = {
         .find('.time-oper')
         .remove()
     }
-    
+
     var oldAvailableWidth = this.availableWidth
-    
+
     //设置刻度尺播放区域宽度
     this.availableWidth = this.lineWidth - (
       this.caller
@@ -302,11 +302,11 @@ AutoTime.prototype = {
         .width()
       + 5
     )
-    
+
     this.caller
       .find('.time-bg')
       .width(this.availableWidth)
-    
+
     //设置刻度
     var disFontArr = '',
       disFont = '',
@@ -315,9 +315,9 @@ AutoTime.prototype = {
         ['year', 'month', 'day']
       ],
       disType = $.inArray(this.range[1], font[1])
-    
+
     disType = disType === -1 ? 0 : disType
-    
+
     this.range[0] = this.range[0].length > 0
       ? this.range[0]
       : [
@@ -331,17 +331,17 @@ AutoTime.prototype = {
         '2015-01-01',
         '2016-01-01'
       ]
-    
+
     for(var j = 0, len = this.range[0].length; j < len; j++) {
       disFontArr = this.range[0][j]
         .split(/-|\.|\//, (disType + 1))
-      
+
       disFont = ''
-      
+
       $.each(disFontArr, function(i, v) {
         disFont += parseInt(v) + font[0][i]
       })
-      
+
       if(j < this.range[0].length - 1) {
         this.caller
           .find('.time-graduationCon')
@@ -362,29 +362,29 @@ AutoTime.prototype = {
           )
       }
     }
-    
+
     //刻度尺定位及刻度区域划分
     this.caller
       .find('.time-position')
       .width(this.availableWidth)
       .css('left', 14)
-    
+
     this.graduationCount = this.caller
       .find('.time-graduation')
       .length
-    
+
     this.interval = (this.availableWidth - this.graduationCount * 30) / (this.graduationCount - 1)
-    
+
     this.caller
       .find('.time-layout')
       .width(this.interval)
-    
+
     //重新布局后，设置游标在新刻度尺中对应旧刻度尺的位置比例
     if(typeof this.isDownPause !== 'undefined'
       && this.isDownPause !== undefined
     ) {
       this.graduationLeft = this.graduationLeft / oldAvailableWidth * this.availableWidth
-      
+
       this.caller
         .find('.time-bg span')
         .css('left', this.graduationLeft)
@@ -405,9 +405,9 @@ AutoTime.prototype = {
    */
   reLayout: function(delay) {
     var _this = this
-    
+
     _this.isDownPause = _this.isPause
-    
+
     if(!_this.isPause) {
       _this.pause()
     } else {
@@ -415,14 +415,14 @@ AutoTime.prototype = {
         .find('.time-bg span')
         .position().left
     }
-    
+
     setTimeout(function() {
       _this.layout()
       if(!_this.isDownPause) {
         _this.repeatScale = false
         _this.start(_this.currentIndex, true)
       }
-      
+
       _this.isDownPause = undefined
     }, delay || 0)
   },
@@ -438,13 +438,13 @@ AutoTime.prototype = {
       this.caller
         .find('.time-status')
         .addClass('pause')
-      
+
       this.graduationLeft = this.caller
         .find('.time-bg span')
         .position().left
-      
+
       this.isPause = false
-      
+
       this.animationQueue(startIndex, isRestart)
     }
   },
@@ -459,12 +459,12 @@ AutoTime.prototype = {
       this.caller
         .find('.time-status')
         .removeClass('pause')
-      
+
       this.caller
         .find('.time-bg span')
         .clearQueue()
         .stop(true)
-      
+
       this.graduationLeft = this.caller
         .find('.time-bg span')
         .position().left
@@ -479,32 +479,32 @@ AutoTime.prototype = {
       $(document).on('mouseup', function() {
         _this.mouseUp()
       })
-      
+
       _this.isDownPause = _this.isPause
-      
+
       if(!_this.isPause) {
         _this.pause()
       }
-      
+
       _this.isDrag = true
-      
+
       $('body').addClass('selectnone')
-      
+
       $(document).on('mousemove', function(e) {
         _this.graduationLeft = e.pageX - _this.caller
           .find('.time-position')
           .offset().left - 15
-        
+
         _this.graduationLeft = _this.graduationLeft < 0
           ? 0
           : _this.graduationLeft
-        
+
         _this.graduationLeft = _this.graduationLeft > _this.caller
           .find('.time-position')
           .width() - 30
           ? _this.caller.find('.time-position').width() - 30
           : _this.graduationLeft
-        
+
         _this.caller
           .find('.time-bg span')
           .css('left', _this.graduationLeft)
@@ -517,7 +517,7 @@ AutoTime.prototype = {
   mouseUp: function() {
     $(document).off('mousemove')
     $(document).off('mouseup')
-    
+
     if(this.isDrag && !this.inoperable) {
       this.isDrag = false
       this.currentIndex = this.closestGraduation()
@@ -535,11 +535,11 @@ AutoTime.prototype = {
         .find('.time-bg span')
         .position()
         .left
-      
+
       this.caller
         .find('.time-bg span')
         .stop(true)
-      
+
       this.animationFactory(this.currentIndex, true)
     }
   },
@@ -551,13 +551,13 @@ AutoTime.prototype = {
   closestGraduation: function(reverse) {
     reverse = !!reverse
     var extent = -15
-    
+
     for(var i = 0; i < this.graduationCount; i++) {
       if(extent < this.graduationLeft
         && extent + 30 > this.graduationLeft
       ) {
         this.repeatScale = true
-        
+
         if(reverse) {
           return --i === -1
             ? this.graduationCount - 1
@@ -566,9 +566,9 @@ AutoTime.prototype = {
           return i
         }
       }
-      
+
       extent += 30 + this.interval
-      
+
       if(extent > this.graduationLeft) {
         this.repeatScale = reverse
         return i
@@ -582,7 +582,7 @@ AutoTime.prototype = {
    */
   animationQueue: function(startIndex, isRestart) {
     var _this = this
-    
+
     if(isRestart) {
       if(typeof _this.repeatScale !== 'undefined'
         && _this.repeatScale !== undefined
@@ -591,7 +591,7 @@ AutoTime.prototype = {
         startIndex++
       }
     }
-    
+
     if(startIndex === _this.graduationCount) {
       _this._transition()
     } else {
@@ -611,7 +611,7 @@ AutoTime.prototype = {
     var _this = this,
       interval = _this.interval + 30,
       delay = _this.autoPlaySpeed
-    
+
     if(isRestart) {
       if((
         (_this.prevIndex === 0
@@ -634,12 +634,12 @@ AutoTime.prototype = {
           ) {
             index++
           }
-          
+
           delay /= 30
         } else {
           delay = Math.abs((1 - ((_this.graduationLeft - (index - 1) * interval) / interval)) * delay)
         }
-        
+
         _this.repeatScale = undefined
       }
     } else {
@@ -647,7 +647,7 @@ AutoTime.prototype = {
         delay = 0
       }
     }
-    
+
     _this.caller
       .find('.time-bg span')
       .animate({
@@ -656,7 +656,7 @@ AutoTime.prototype = {
         delay,
         function() {
           _this.currentIndex = index
-          
+
           if((_this.currentIndex === _this.graduationCount - 1
             || (_this.currentIndex === 0
               && _this.isManually)
@@ -681,7 +681,7 @@ AutoTime.prototype = {
         {'fontSize': 12},
         300)
       .css('color', '#333333')
-    
+
     this.caller
       .find('.time-graduation')
       .eq(this.currentIndex)
@@ -690,11 +690,11 @@ AutoTime.prototype = {
         {'fontSize': 14},
         300)
       .css('color', '#ff8400')
-    
+
     this.isManually = false
     this.isDownPause = undefined
     this.prevIndex = this.currentIndex
-    
+
     //到达指定刻度，执行回调函数
     if(typeof this.callback === 'function') {
       this.callbackFun()
@@ -716,7 +716,7 @@ AutoTime.prototype = {
             .find('.time-bg span')
             .css('left', 0)
         }
-        
+
         _this.start(0, false)
       } else {
         if(_this.transition) {
@@ -729,7 +729,7 @@ AutoTime.prototype = {
               _this.caller
                 .find('.time-bg span')
                 .css('left', 0)
-              
+
               _this.start(0, false)
             },
             _this.autoPlaySpeed
@@ -747,14 +747,14 @@ AutoTime.prototype = {
   transitionStatus: function() {
     var _this = this
     _this.inoperable = true
-    
+
     _this.caller
       .find('.time-bg div')
       .animate(
         {opacity: 0.4},
         500
       )
-    
+
     setTimeout(function() {
         _this.caller
           .find('.time-bg div')
@@ -776,7 +776,7 @@ AutoTime.prototype = {
       .find('.time-graduation')
       .eq(this.currentIndex)
       .data('time')
-    
+
     this.callback({
       date: time || '',
       dateArray: time.split(/[-./]/) || [],
@@ -788,10 +788,10 @@ AutoTime.prototype = {
    */
   inoperableChange: function() {
     var _this = this
-    
+
     setTimeout(function() {
         _this.inoperable = false
-        
+
         _this.caller
           .find('.time-oper')
           .animate(
@@ -810,12 +810,12 @@ AutoTime.prototype = {
    */
   _event: function() {
     var _this = this
-    
+
     $(window).resize(function(e) {
       _this.reLayout()
       e.stopPropagation()
     })
-    
+
     _this.caller
       .find('.time-status')
       .click(function(e) {
@@ -824,14 +824,14 @@ AutoTime.prototype = {
         } else {
           _this.repeatScale = undefined
         }
-        
+
         _this.autoPlay = true
         _this.firstIndex = _this.currentIndex
         _this.pause()
-        
+
         e.stopPropagation()
       })
-    
+
     _this.caller
       .find('.time-prev')
       .click(function(e) {
@@ -839,12 +839,12 @@ AutoTime.prototype = {
           _this.caller
             .find('.time-oper')
             .css('opacity', 0.1)
-          
+
           _this.inoperable = true
           _this.firstIndex = _this.currentIndex
           _this.isDownPause = _this.isPause
           _this.isManually = true
-          
+
           if(!_this.isPause) {
             _this.pause()
             _this.currentIndex = _this.closestGraduation(true)
@@ -853,14 +853,14 @@ AutoTime.prototype = {
               ? _this.graduationCount - 1
               : _this.currentIndex
           }
-          
+
           _this.resetGraduation()
           _this.inoperableChange()
         }
-        
+
         e.stopPropagation()
       })
-    
+
     _this.caller
       .find('.time-next')
       .click(function(e) {
@@ -868,12 +868,12 @@ AutoTime.prototype = {
           _this.caller
             .find('.time-oper')
             .css('opacity', 0.1)
-          
+
           _this.inoperable = true
           _this.firstIndex = _this.currentIndex
           _this.isDownPause = _this.isPause
           _this.isManually = true
-          
+
           if(!_this.isPause) {
             _this.currentIndex++
             _this.pause()
@@ -882,21 +882,21 @@ AutoTime.prototype = {
               ? 0
               : _this.currentIndex
           }
-          
+
           _this.resetGraduation()
           _this.inoperableChange()
         }
-        
+
         e.stopPropagation()
       })
-    
+
     _this.caller
       .find('.time-bg span')
       .on('mousedown', function(e) {
         _this.move()
         e.stopPropagation()
       })
-    
+
     _this.caller
       .find('.time-bg span')
       .on('mouseup', function(e) {

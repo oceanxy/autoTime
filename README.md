@@ -11,7 +11,7 @@
 * 本插件依赖jQuery库
 * 当插件父容器的宽度发生改变，且本插件没有自动调整布局时，请手动调用本插件重新布局方法：
 
-		AutoTime.reLayout(delay);
+		Index.reLayout(delay);
 
 	参数delay为延迟执行的毫秒数（如有动画，重新布局应在发生宽度改变动画结束后调用）
 
@@ -31,7 +31,7 @@
 2. 导入jquery库文件和autoTime.js
 	```HTML
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="scripts/autoTime.js"></script>
+    <script src="scripts/index.js"></script>
     ```
 3. DOM
 	```HTML
@@ -61,7 +61,7 @@
 
 * 参数
 
-**AutoTime(object[,option][,callback]) {**
+**Index(object[,option][,callback]) {**
 
 >**_object_** (必需): **_{jQuery | $}_**
 >
