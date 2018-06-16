@@ -7,12 +7,12 @@
     <meta name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>autoTime demo</title>
-    
+
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/autoTime.css" />
   </head>
   <body>
-    <p class="cl-title">时间播放条</p>
+    <p class="cl-title">时间播放轴</p>
     <div class="cl-content">
       <div class="autoTime" id="autoTime1">
         <ul class="time-bgs">
@@ -70,17 +70,17 @@
         </ul>
       </div>
     </div>
-  
+
   </body>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="scripts/autoTime.js"></script>
-  
+
   <script type="text/javascript">
-    
-    
+
+
     //使用默认值加载时间轴
     new AutoTime($('#autoTime1'))
-    
+
     //自定义时间轴参数
     new AutoTime(
       $('#autoTime2'), {
@@ -96,7 +96,7 @@
         console.log('时间条2到达：' + data.dateArray[0])
       }
     )
-    
+
     //自定义时间轴参数
     new AutoTime(
       $('#autoTime3'), {
